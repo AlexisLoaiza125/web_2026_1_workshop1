@@ -7,7 +7,7 @@ class Conversion:
         return (fahrenheit - 32) *(5/9)
     pass
     def metros_a_pies(self, metros):
-        return metros * 3.28084
+        return metros * 3.280840
     pass
 
     def pies_a_metros(self, pies):
