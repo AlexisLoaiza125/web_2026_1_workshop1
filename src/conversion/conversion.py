@@ -18,6 +18,7 @@ class Conversion:
         return bin(decimal)[2:]
     pass
     
+    
     def binario_a_decimal(self, binario):
         return int(binario, 2)
     pass
