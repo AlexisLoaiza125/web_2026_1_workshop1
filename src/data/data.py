@@ -28,82 +28,139 @@ class Data:
     pass
     
     def merge_ordenado(self, lista1, lista2):
-        """
-        Combina dos listas ordenadas en una sola lista ordenada.
-        
-        Args:
-            lista1 (list): Primera lista ordenada
-            lista2 (list): Segunda lista ordenada
-            
-        Returns:
-            list: Lista combinada y ordenada
-        """
-        pass
+        resultado = []
+        i = 0
+        j = 0
+
+        while i < len(lista1) and j < len(lista2):
+            if lista1[i] <= lista2[j]:
+                resultado.append(lista1[i])
+                i += 1
+            else:
+                resultado.append(lista2[j])
+                j += 1
+
+        while i < len(lista1):
+            resultado.append(lista1[i])
+            i += 1
+
+        while j < len(lista2):
+            resultado.append(lista2[j])
+            j += 1
+
+        return resultado
+
+    pass
     
     def rotar_lista(self, lista, k):
-        """
-        Rota los elementos de una lista k posiciones a la derecha.
-        
-        Args:
-            lista (list): Lista a rotar
-            k (int): Número de posiciones a rotar
-            
-        Returns:
-            list: Lista rotada
-        """
-        pass
+        if not lista:
+            return lista
+
+        n = len(lista)
+        k = k % n
+
+        resultado = []
+    
+        for i in range(n - k, n):
+            resultado.append(lista[i])
+    
+        for i in range(0, n - k):
+            resultado.append(lista[i])
+
+        return resultado
+    pass
     
     def encuentra_numero_faltante(self, lista):
-        """
-        Encuentra el número faltante en una lista de enteros del 1 al n.
-        
-        Args:
-            lista (list): Lista de enteros del 1 al n con un número faltante
-            
-        Returns:
-            int: El número que falta en la secuencia
-        """
-        pass
+        n = len(lista) + 1
+        suma_esperada = n * (n + 1) // 2
+        suma_real = 0
+
+        for num in lista:
+            suma_real += num
+
+        return suma_esperada - suma_real
+    pass
     
     def es_subconjunto(self, conjunto1, conjunto2):
-        """
-        Verifica si conjunto1 es subconjunto de conjunto2 sin usar set.
-        
-        Args:
-            conjunto1 (list): Posible subconjunto
-            conjunto2 (list): Conjunto principal
-            
-        Returns:
-            bool: True si conjunto1 es subconjunto de conjunto2, False en caso contrario
-        """
-        pass
-    
+        for elemento in conjunto1:
+            encontrado = False
+            for elem2 in conjunto2:
+                if elemento == elem2:
+                    encontrado = True
+                    break
+            if not encontrado:
+                return False
+        return True
+    pass 
+
     def implementar_pila(self):
-        """
-        Implementa una estructura de datos tipo pila (stack) usando listas.
-        
-        Returns:
-            dict: Diccionario con métodos push, pop, peek y is_empty
-        """
-        pass
+        pila = []
+
+        def push(valor):
+            pila.append(valor)
+
+        def pop():
+            if pila:
+                return pila.pop()
+            return None
+
+        def peek():
+            if pila:
+                return pila[-1]
+            return None
+
+        def is_empty():
+            return len(pila) == 0
+
+        return {
+            "push": push,
+            "pop": pop,
+            "peek": peek,
+            "is_empty": is_empty
+        }
+    pass
     
     def implementar_cola(self):
-        """
-        Implementa una estructura de datos tipo cola (queue) usando listas.
-        
-        Returns:
-            dict: Diccionario con métodos enqueue, dequeue, peek y is_empty
-        """
-        pass
+        cola = []
+
+        def enqueue(valor):
+            cola.append(valor)
+
+        def dequeue():
+            if cola:
+                return cola.pop(0)
+            return None
+
+        def peek():
+            if cola:
+                return cola[0]
+            return None
+
+        def is_empty():
+            return len(cola) == 0
+
+        return {
+            "enqueue": enqueue,
+            "dequeue": dequeue,
+            "peek": peek,
+            "is_empty": is_empty
+        }
+    pass
     
     def matriz_transpuesta(self, matriz):
-        """
-        Calcula la transpuesta de una matriz.
-        
-        Args:
-            matriz (list): Lista de listas que representa una matriz
-            
-        Returns:
-            list: Matriz transpuesta
-        """
-        pass
+        if not matriz:
+            return []
+
+        filas = len(matriz)
+        columnas = len(matriz[0])
+
+        transpuesta = []
+
+        for j in range(columnas):
+            nueva_fila = []
+            for i in range(filas):
+                nueva_fila.append(matriz[i][j])
+            transpuesta.append(nueva_fila)
+
+        return transpuesta
+    pass
