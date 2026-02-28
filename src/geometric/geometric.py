@@ -33,121 +33,47 @@ class Geometria:
     pass
     
     def es_triangulo_valido(self, lado1, lado2, lado3):
-        """
-        Verifica si tres longitudes pueden formar un triángulo válido.
-        Un triángulo es válido si la suma de las longitudes de dos lados
-        es mayor que la longitud del tercer lado, para todos los lados.
-        
-        Args:
-            lado1 (float): Longitud del primer lado
-            lado2 (float): Longitud del segundo lado
-            lado3 (float): Longitud del tercer lado
-            
-        Returns:
-            bool: True si los lados pueden formar un triángulo, False en caso contrario
-        """
-        pass
-    
+        return (
+            lado1 + lado2 > lado3 and
+            lado1 + lado3 > lado2 and
+            lado2 + lado3 > lado1
+        )
+    pass 
     def area_trapecio(self, base_mayor, base_menor, altura):
-        """
-        Calcula el área de un trapecio.
-        
-        Args:
-            base_mayor (float): Longitud de la base mayor
-            base_menor (float): Longitud de la base menor
-            altura (float): Altura del trapecio
-            
-        Returns:
-            float: Área del trapecio
-        """
-        pass
+        return ((base_mayor + base_menor) * altura) / 2
+    pass
     
     def area_rombo(self, diagonal_mayor, diagonal_menor):
-        """
-        Calcula el área de un rombo usando sus diagonales.
-        
-        Args:
-            diagonal_mayor (float): Longitud de la diagonal mayor
-            diagonal_menor (float): Longitud de la diagonal menor
-            
-        Returns:
-            float: Área del rombo
-        """
-        pass
+        return (diagonal_mayor * diagonal_menor) / 2
+    pass
     
     def area_pentagono_regular(self, lado, apotema):
-        """
-        Calcula el área de un pentágono regular.
-        
-        Args:
-            lado (float): Longitud del lado del pentágono
-            apotema (float): Longitud de la apotema (distancia del centro al punto medio de un lado)
-            
-        Returns:
-            float: Área del pentágono regular
-        """
-        pass
+        perimetro = self.perimetro_pentagono_regular(lado)
+        return (perimetro * apotema) / 2
+    pass
     
     def perimetro_pentagono_regular(self, lado):
-        """
-        Calcula el perímetro de un pentágono regular.
-        
-        Args:
-            lado (float): Longitud del lado del pentágono
-            
-        Returns:
-            float: Perímetro del pentágono regular
-        """
-        pass
+        return 5 * lado   
+    pass
     
     def area_hexagono_regular(self, lado, apotema):
-        """
-        Calcula el área de un hexágono regular.
-        
-        Args:
-            lado (float): Longitud del lado del hexágono
-            apotema (float): Longitud de la apotema (distancia del centro al punto medio de un lado)
-            
-        Returns:
-            float: Área del hexágono regular
-        """
-        pass
+        perimetro = self.perimetro_hexagono_regular(lado)
+        return (perimetro * apotema) / 2
+    pass
     
     def perimetro_hexagono_regular(self, lado):
-        """
-        Calcula el perímetro de un hexágono regular.
-        
-        Args:
-            lado (float): Longitud del lado del hexágono
-            
-        Returns:
-            float: Perímetro del hexágono regular
-        """
-        pass
+        return 6 * lado
+    pass
     
     def volumen_cubo(self, lado):
-        """
-        Calcula el volumen de un cubo.
-        
-        Args:
-            lado (float): Longitud del lado del cubo
-            
-        Returns:
-            float: Volumen del cubo
-        """
-        pass
+        if (lado < 0 ):
+            return 0
+        return lado ** 3
+    pass
     
     def area_superficie_cubo(self, lado):
-        """
-        Calcula el área de la superficie de un cubo.
-        
-        Args:
-            lado (float): Longitud del lado del cubo
-            
-        Returns:
-            float: Área de la superficie del cubo
-        """
-        pass
+        return 6 * (lado ** 2)
+    pass
     
     def volumen_esfera(self, radio):
         """
