@@ -1,4 +1,5 @@
 import math
+from math import gcd
 class Geometria:
     """
     Class with geometric exercises.
@@ -102,21 +103,28 @@ class Geometria:
     pass
     
     def pendiente_recta(self, x1, y1, x2, y2):
-        if x2 == x1:
-            return None  # pendiente indefinida
-        return (y2 - y1) / (x2 - x1)
+        D = x2 - x1
+        if D == 0:
+            raise ZeroDivisionError("Pendiente indefinida: línea vertical")
+        return (y2 - y1) / D
     pass
     
     def ecuacion_recta(self, x1, y1, x2, y2):
-        # Forma general Ax + By + C = 0
+        if (y1 == y2 ):
+            A = 0
+            B = 1
+            C = -y2
+            return (A,B,C)
+
         A = y2 - y1
         B = x1 - x2
         C = x2*y1 - x1*y2
+
         return (A, B, C)
     pass
     
     def area_poligono_regular(self, num_lados, lado, apotema):
-        perimetro = self.perimetro_poligono_regular(num_lados, lado)
+        perimetro = num_lados * lado
         return (perimetro * apotema) / 2
     pass
     
