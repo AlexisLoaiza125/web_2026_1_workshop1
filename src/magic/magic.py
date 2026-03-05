@@ -5,64 +5,67 @@ class Magic:
     """
     
     def fibonacci(self, n):
-        """
-        Calcula el n-ésimo número de la secuencia de Fibonacci.
+        if n < 0:
+            return None
+        if n == 0:
+            return 0
+        if n == 1:
+            return 1
         
-        Args:
-            n (int): Posición en la secuencia (empezando desde 0)
-            
-        Returns:
-            int: El n-ésimo número de Fibonacci
-        """
-        pass
+        a = 0
+        b = 1
+        
+        for _ in range(2, n + 1):
+            a, b = b, a + b
+        
+        return b
+    pass
     
     def secuencia_fibonacci(self, n):
-        """
-        Genera los primeros n números de la secuencia de Fibonacci.
+        resultado = []
+        a = 0
+        b = 1
         
-        Args:
-            n (int): Cantidad de números a generar
-            
-        Returns:
-            list: Lista con los primeros n números de Fibonacci
-        """
-        pass
+        for _ in range(n):
+            resultado.append(a)
+            a, b = b, a + b
+        
+        return resultado
+    pass
     
     def es_primo(self, n):
-        """
-        Verifica si un número es primo.
+        if n < 2:
+            return False
         
-        Args:
-            n (int): Número a verificar
-            
-        Returns:
-            bool: True si n es primo, False en caso contrario
-        """
-        pass
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                return False
+        
+        return True
+    pass
     
     def generar_primos(self, n):
-        """
-        Genera una lista de números primos hasta n.
+        primos = []
         
-        Args:
-            n (int): Límite superior para generar primos
-            
-        Returns:
-            list: Lista de números primos hasta n
-        """
-        pass
+        for i in range(2, n + 1):
+            if self.es_primo(i):
+                primos.append(i)
+        
+        return primos
+    pass
     
     def es_numero_perfecto(self, n):
-        """
-        Verifica si un número es perfecto (igual a la suma de sus divisores propios).
+        if n <= 1:
+            return False
         
-        Args:
-            n (int): Número a verificar
-            
-        Returns:
-            bool: True si n es un número perfecto, False en caso contrario
-        """
-        pass
+        suma = 0
+        
+        for i in range(1, n):
+            if n % i == 0:
+                suma += i
+        
+        return suma == n
+    pass
     
     def triangulo_pascal(self, filas):
         """
