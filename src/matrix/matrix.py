@@ -5,126 +5,98 @@ class Matrix:
     """
 
     def suma_matrices(self, A, B):
-        """
-        Suma dos matrices elemento a elemento.
+        if len(A) != len(B) or len(A[0]) != len(B[0]):
+            raise ValueError("Dimensiones incompatibles")
 
-        Args:
-            A (list): Primera matriz (lista de listas)
-            B (list): Segunda matriz (lista de listas), debe tener las mismas dimensiones que A
-
-        Returns:
-            list: Matriz resultante de la suma
-
-        Raises:
-            ValueError: Si las matrices tienen dimensiones incompatibles
-
-        Ejemplo:
-            suma_matrices([[1, 2], [3, 4]], [[5, 6], [7, 8]]) -> [[6, 8], [10, 12]]
-        """
-        pass
+        resultado = []
+        for i in range(len(A)):
+            fila = []
+            for j in range(len(A[0])):
+                fila.append(A[i][j] + B[i][j])
+            resultado.append(fila)
+        return resultado
+    pass
 
     def resta_matrices(self, A, B):
-        """
-        Resta dos matrices elemento a elemento (A - B).
+        if len(A) != len(B) or len(A[0]) != len(B[0]):
+            raise ValueError("Dimensiones incompatibles")
 
-        Args:
-            A (list): Primera matriz (lista de listas)
-            B (list): Segunda matriz (lista de listas), debe tener las mismas dimensiones que A
+        resultado = []
+        for i in range(len(A)):
+            fila = []
+            for j in range(len(A[0])):
+                fila.append(A[i][j] - B[i][j])
+            resultado.append(fila)
 
-        Returns:
-            list: Matriz resultante de la resta
-
-        Raises:
-            ValueError: Si las matrices tienen dimensiones incompatibles
-
-        Ejemplo:
-            resta_matrices([[5, 6], [7, 8]], [[1, 2], [3, 4]]) -> [[4, 4], [4, 4]]
-        """
-        pass
+        return resultado
+    pass
 
     def multiplicar_matrices(self, A, B):
-        """
-        Multiplica dos matrices usando la multiplicación matricial estándar.
-        El número de columnas de A debe ser igual al número de filas de B.
+        if len(A[0]) != len(B):
+            raise ValueError("Dimensiones incompatibles para multiplicación")
 
-        Args:
-            A (list): Primera matriz de dimensiones m x n
-            B (list): Segunda matriz de dimensiones n x p
+        resultado = []
 
-        Returns:
-            list: Matriz resultante de dimensiones m x p
+        for i in range(len(A)):
+            fila = []
+            for j in range(len(B[0])):
+                suma = 0
+                for k in range(len(B)):
+                    suma += A[i][k] * B[k][j]
+                fila.append(suma)
+            resultado.append(fila)
 
-        Raises:
-            ValueError: Si las dimensiones son incompatibles para multiplicación
-
-        Ejemplo:
-            multiplicar_matrices([[1, 2], [3, 4]], [[5, 6], [7, 8]]) -> [[19, 22], [43, 50]]
-        """
-        pass
+        return resultado
+    pass
 
     def multiplicar_escalar(self, matriz, escalar):
-        """
-        Multiplica cada elemento de la matriz por un escalar.
+        resultado = []
 
-        Args:
-            matriz (list): Matriz (lista de listas)
-            escalar (number): Valor escalar por el que se multiplica
+        for fila in matriz:
+            nueva_fila = []
+            for elemento in fila:
+                nueva_fila.append(elemento * escalar)
+            resultado.append(nueva_fila)
 
-        Returns:
-            list: Matriz con cada elemento multiplicado por el escalar
-
-        Ejemplo:
-            multiplicar_escalar([[1, 2], [3, 4]], 3) -> [[3, 6], [9, 12]]
-        """
-        pass
+        return resultado
+    pass
 
     def transpuesta(self, matriz):
-        """
-        Calcula la transpuesta de una matriz (intercambia filas por columnas).
+        if not matriz:
+            return []
+        filas = len(matriz)
+        columnas = len(matriz[0])
 
-        Args:
-            matriz (list): Matriz (lista de listas)
+        resultado = []
 
-        Returns:
-            list: Matriz transpuesta
+        for j in range(columnas):
+            fila = []
+            for i in range(filas):
+                fila.append(matriz[i][j])
+            resultado.append(fila)
 
-        Ejemplo:
-            transpuesta([[1, 2, 3], [4, 5, 6]]) -> [[1, 4], [2, 5], [3, 6]]
-        """
-        pass
+        return resultado
+    pass 
 
     def es_cuadrada(self, matriz):
-        """
-        Verifica si una matriz es cuadrada (mismo número de filas y columnas).
-
-        Args:
-            matriz (list): Matriz (lista de listas)
-
-        Returns:
-            bool: True si la matriz es cuadrada, False en caso contrario
-
-        Ejemplo:
-            es_cuadrada([[1, 2], [3, 4]]) -> True
-            es_cuadrada([[1, 2, 3], [4, 5, 6]]) -> False
-        """
-        pass
+        if not matriz:
+            return False
+        return len(matriz) == len(matriz[0])
+    pass
 
     def es_simetrica(self, matriz):
-        """
-        Verifica si una matriz es simétrica (igual a su transpuesta).
-        Solo aplica a matrices cuadradas.
+        if not self.es_cuadrada(matriz):
+            return False
 
-        Args:
-            matriz (list): Matriz cuadrada (lista de listas)
+        n = len(matriz)
 
-        Returns:
-            bool: True si la matriz es simétrica, False en caso contrario
+        for i in range(n):
+            for j in range(n):
+                if matriz[i][j] != matriz[j][i]:
+                    return False
 
-        Ejemplo:
-            es_simetrica([[1, 2, 3], [2, 5, 6], [3, 6, 9]]) -> True
-            es_simetrica([[1, 2], [3, 4]]) -> False
-        """
-        pass
+        return True
+    pass
 
     def traza(self, matriz):
         """
