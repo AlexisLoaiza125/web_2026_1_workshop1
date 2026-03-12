@@ -99,62 +99,38 @@ class Matrix:
     pass
 
     def traza(self, matriz):
-        """
-        Calcula la traza de una matriz cuadrada (suma de los elementos de la diagonal principal).
-
-        Args:
-            matriz (list): Matriz cuadrada (lista de listas)
-
-        Returns:
-            number: La suma de los elementos de la diagonal principal
-
-        Raises:
-            ValueError: Si la matriz no es cuadrada
-
-        Ejemplo:
-            traza([[1, 2], [3, 4]]) -> 5
-            traza([[1, 0, 0], [0, 5, 0], [0, 0, 9]]) -> 15
-        """
-        pass
+        if len(matriz) != len(matriz[0]):
+            raise ValueError("La matriz no es cuadrada")
+    
+        suma = 0
+        for i in range(len(matriz)):
+            suma += matriz[i][i]
+    
+        return suma
+    pass
 
     def determinante_2x2(self, matriz):
-        """
-        Calcula el determinante de una matriz 2x2.
-        det([[a, b], [c, d]]) = a*d - b*c
-
-        Args:
-            matriz (list): Matriz 2x2 (lista de listas)
-
-        Returns:
-            number: El determinante de la matriz
-
-        Raises:
-            ValueError: Si la matriz no es 2x2
-
-        Ejemplo:
-            determinante_2x2([[3, 8], [4, 6]]) -> -14
-            determinante_2x2([[1, 2], [3, 4]]) -> -2
-        """
-        pass
+        if len(matriz) != 2 or len(matriz[0]) != 2:
+            raise ValueError("La matriz no es 2x2")
+    
+        a = matriz[0][0]
+        b = matriz[0][1]
+        c = matriz[1][0]
+        d = matriz[1][1]
+    
+        return a*d - b*c
+    pass
 
     def determinante_3x3(self, matriz):
-        """
-        Calcula el determinante de una matriz 3x3 usando la regla de Sarrus.
+        if len(matriz) != 3 or any(len(fila) != 3 for fila in matriz):
+            raise ValueError("La matriz no es 3x3")
 
-        Args:
-            matriz (list): Matriz 3x3 (lista de listas)
+        a, b, c = matriz[0]
+        d, e, f = matriz[1]
+        g, h, i = matriz[2]
 
-        Returns:
-            number: El determinante de la matriz
-
-        Raises:
-            ValueError: Si la matriz no es 3x3
-
-        Ejemplo:
-            determinante_3x3([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) -> 0
-            determinante_3x3([[1, 0, 0], [0, 2, 0], [0, 0, 3]]) -> 6
-        """
-        pass
+        return (a*e*i + b*f*g + c*d*h) - (c*e*g + b*d*i + a*f*h)
+    pass
 
     def identidad(self, n):
         """
