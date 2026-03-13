@@ -133,57 +133,45 @@ class Matrix:
     pass
 
     def identidad(self, n):
-        """
-        Genera una matriz identidad de tamaño n x n.
-        La diagonal principal tiene 1s y el resto 0s.
-
-        Args:
-            n (int): Tamaño de la matriz identidad
-
-        Returns:
-            list: Matriz identidad n x n
-
-        Ejemplo:
-            identidad(2) -> [[1, 0], [0, 1]]
-            identidad(3) -> [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
-        """
-        pass
+        matriz = []
+    
+        for i in range(n):
+            fila = []
+            for j in range(n):
+                if i == j:
+                    fila.append(1)
+                else:
+                    fila.append(0)
+            matriz.append(fila)
+    
+        return matriz
+    pass
 
     def diagonal(self, matriz):
-        """
-        Extrae los elementos de la diagonal principal de una matriz cuadrada.
-
-        Args:
-            matriz (list): Matriz cuadrada (lista de listas)
-
-        Returns:
-            list: Lista con los elementos de la diagonal principal
-
-        Raises:
-            ValueError: Si la matriz no es cuadrada
-
-        Ejemplo:
-            diagonal([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) -> [1, 5, 9]
-            diagonal([[3, 0], [0, 7]]) -> [3, 7]
-        """
-        pass
+        if len(matriz) != len(matriz[0]):
+            raise ValueError("La matriz no es cuadrada")
+    
+        diag = []
+    
+        for i in range(len(matriz)):
+            diag.append(matriz[i][i])
+    
+        return diag
+    pass
 
     def es_diagonal(self, matriz):
-        """
-        Verifica si una matriz cuadrada es diagonal
-        (todos los elementos fuera de la diagonal principal son cero).
-
-        Args:
-            matriz (list): Matriz cuadrada (lista de listas)
-
-        Returns:
-            bool: True si la matriz es diagonal, False en caso contrario
-
-        Ejemplo:
-            es_diagonal([[3, 0], [0, 7]]) -> True
-            es_diagonal([[1, 2], [0, 4]]) -> False
-        """
-        pass
+        if len(matriz) != len(matriz[0]):
+            return False
+    
+        n = len(matriz)
+    
+        for i in range(n):
+            for j in range(n):
+                if i != j and matriz[i][j] != 0:
+                    return False
+    
+        return True
+    pass
 
     def rotar_90(self, matriz):
         """
